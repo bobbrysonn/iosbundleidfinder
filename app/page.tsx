@@ -34,13 +34,11 @@ export default function Navbar() {
         <section className="max-w-[30rem] mt-6 lg:mt-10 mx-auto px-1.5">
           <LookupForm />
         </section>
+        <section></section>
       </main>
       <footer className="text-center py-4">
         <p className="mt-4 text-sm text-muted-foreground">
-          Made with ❤️ by{" "}
-          <a href="https://bobbrysonn.dev" className="text-white">
-            Bob Moriasi
-          </a>
+          Made with ❤️ by <a href="https://bobbrysonn.dev">Bob Moriasi</a>
         </p>
       </footer>
     </>
