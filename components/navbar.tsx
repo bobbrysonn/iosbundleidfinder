@@ -3,7 +3,7 @@ import { Apple } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 bg-background py-6 px-4 md:px-6">
+    <header className="bg-background py-6 px-4 md:px-6">
       <nav className="font-medium flex flex-row items-center justify-between gap-5 text-sm lg:gap-6">
         <Link
           href="#"
@@ -13,7 +13,7 @@ export default function Navbar() {
           <span className="sr-only">Bundle ID Identifier</span>
         </Link>
         <Link
-          href="#"
+          href="https://buymeacoffee.com/bobbrysonn"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Buy me a coffee
