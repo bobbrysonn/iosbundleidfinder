@@ -557,8 +557,9 @@ export default function LookupForm({
     const response = await fetch(
       `https://itunes.apple.com/search?limit=10&media=software&term=${data.appname}&country=${data.country}&lang=en-us`
     );
+    const res = await response.json();
 
-    setResults(await response.json());
+    setResults(res);
     setLoading(false);
   }
 

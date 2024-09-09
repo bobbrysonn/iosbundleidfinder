@@ -39,16 +39,18 @@ export default function ResultsList({
   };
 
   if (results === null || results === undefined) {
-    return (
-      <Card className="pb-6">
-        <CardHeader>
-          <CardTitle>No results yet</CardTitle>
-          <CardDescription>
-            Perform a search to see the results here.
-          </CardDescription>
-        </CardHeader>
-      </Card>
-    );
+    if (loading === false) {
+      return (
+        <Card className="pb-6">
+          <CardHeader>
+            <CardTitle>No results yet</CardTitle>
+            <CardDescription>
+              Perform a search to see the results here.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      );
+    }
   }
 
   if (loading === true) {
