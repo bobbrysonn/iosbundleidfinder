@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Results } from "@/types/results";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -535,7 +536,7 @@ const countries = [
   { code: "ZW", country: "Zimbabwe" },
 ];
 
-export default function LookupForm() {
+export default function LookupForm({ setResults }: { setResults: (results: Results) => void }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -549,13 +550,13 @@ export default function LookupForm() {
       `https://itunes.apple.com/search?limit=10&media=software&term=${data.appname}&country=${data.country}&lang=en-us`
     );
 
-    console.log(await response.json());
+    setResults(await response.json());
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(async (data) => await onSubmit(data))}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8"
       >
         <FormField
