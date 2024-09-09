@@ -7,6 +7,7 @@ import { Results } from "@/types/results";
 
 export default function Main() {
   const [results, setResults] = useState<Results>();
+  const [loading, setLoading] = useState(false);
 
   return (
     <main className="min-h-[80vh] mt-3 px-4">
@@ -18,10 +19,10 @@ export default function Main() {
         </p>
       </section>
       <section className="max-w-[30rem] mt-6 lg:mt-10 mx-auto px-1.5">
-        <LookupForm setResults={setResults} />
+        <LookupForm setResults={setResults} setLoading={setLoading} />
       </section>
       <section className="max-w-[30rem] mt-6 lg:mt-10 mx-auto px-1.5">
-        <ResultsList results={results} />
+        <ResultsList results={results} loading={loading} />
       </section>
     </main>
   );

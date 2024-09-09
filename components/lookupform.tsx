@@ -536,7 +536,13 @@ const countries = [
   { code: "ZW", country: "Zimbabwe" },
 ];
 
-export default function LookupForm({ setResults }: { setResults: (results: Results) => void }) {
+export default function LookupForm({
+  setResults,
+  setLoading,
+}: {
+  setResults: (results: Results) => void;
+  setLoading: (loading: boolean) => void;
+}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -546,19 +552,19 @@ export default function LookupForm({ setResults }: { setResults: (results: Resul
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
+    setLoading(true);
+
     const response = await fetch(
       `https://itunes.apple.com/search?limit=10&media=software&term=${data.appname}&country=${data.country}&lang=en-us`
     );
 
     setResults(await response.json());
+    setLoading(false);
   }
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="appname"

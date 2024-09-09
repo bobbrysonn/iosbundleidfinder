@@ -15,8 +15,10 @@ import { Copy, Lightbulb } from "lucide-react";
 
 export default function ResultsList({
   results,
+  loading,
 }: {
   results: Results | undefined;
+  loading: boolean;
 }) {
   const { toast } = useToast();
 
@@ -43,6 +45,19 @@ export default function ResultsList({
           <CardTitle>No results yet</CardTitle>
           <CardDescription>
             Perform a search to see the results here.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
+
+  if (loading === true) {
+    return (
+      <Card className="pb-6">
+        <CardHeader>
+          <CardTitle>Loading...</CardTitle>
+          <CardDescription>
+            Please wait while we fetch the results.
           </CardDescription>
         </CardHeader>
       </Card>
