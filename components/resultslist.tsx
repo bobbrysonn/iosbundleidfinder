@@ -38,21 +38,6 @@ export default function ResultsList({
       });
   };
 
-  if (results === null || results === undefined) {
-    if (loading === false) {
-      return (
-        <Card className="pb-6">
-          <CardHeader>
-            <CardTitle>No results yet</CardTitle>
-            <CardDescription>
-              Perform a search to see the results here.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      );
-    }
-  }
-
   if (loading === true) {
     return (
       <Card className="pb-6">
@@ -60,6 +45,19 @@ export default function ResultsList({
           <CardTitle>Loading...</CardTitle>
           <CardDescription>
             Please wait while we fetch the results.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
+
+  if (results === null || results === undefined) {
+    return (
+      <Card className="pb-6">
+        <CardHeader>
+          <CardTitle>No results yet</CardTitle>
+          <CardDescription>
+            Perform a search to see the results here.
           </CardDescription>
         </CardHeader>
       </Card>
